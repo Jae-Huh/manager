@@ -1,5 +1,7 @@
 # manager
-React Native project
+React Native project for employee management.
+
+A user (manager) can sign up / log in, add or remove employees, and send their schedules via text messages.
 
 https://www.udemy.com/the-complete-react-native-and-redux-course/learn/v4/overview
 
