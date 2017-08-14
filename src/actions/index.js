@@ -48,5 +48,5 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user,
   })
 
-  Actions.employeeList() // employeeList comes from the 'key' prop from Scene component in router.js
+  Actions.main() // 'main' comes from the 'key' prop from Scene component in router.js
 }
