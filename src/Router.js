@@ -1,15 +1,20 @@
 import React from 'react'
-import { Scene, Router } from 'react-native-router-flux'
+import { Scene, Router, Actions } from 'react-native-router-flux'
 
 import LogInForm from './components/LogInForm'
 import EmployeeList from './components/EmployeeList'
+import EmployeeCreate from './components/EmployeeCreate'
 
 const RouterComponent = () => {
   return (
     // sceneStyle in Router component applies to all scenes
     <Router sceneStyle={{ paddingTop: 65 }}>
       <Scene key="auth">
-        <Scene key="login" component={LogInForm} title="Please Login" />
+        <Scene
+          key="login"
+          component={LogInForm}
+          title="Please Login"
+        />
       </Scene>
 
       <Scene key="main">
@@ -18,7 +23,13 @@ const RouterComponent = () => {
           component={EmployeeList}
           title="Employees"
           rightTitle="Add"
-          onRight={() => console.log('right!')}
+          onRight={() => Actions.employeeCreate()}
+          initial
+        />
+        <Scene
+          key="employeeCreate"
+          component={EmployeeCreate}
+          title="Create Employee"
         />
       </Scene>
     </Router>

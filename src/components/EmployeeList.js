@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 
 class EmployeeList extends React.Component {
-  render () {
+  render() {
     return (
       <View>
         <Text>Employee List</Text>
