@@ -8,7 +8,8 @@ import { employeeUpdate, employeeCreate } from '../actions'
 class EmployeeCreate extends React.Component {
   onButtonPress() {
     const { name, phone, shift } = this.props
-    this.props.employeeCreate({ name, phone, shift })
+    // shift: shift || 'Monday' is needed to save the initial value to the store because if the Picker is not touched, the value will remain an empty string.
+    this.props.employeeCreate({ name, phone, shift: shift || 'Monday' })
   }
 
   render() {
