@@ -27,7 +27,7 @@ class EmployeeList extends React.Component {
   }
 
   render() {
-    console.log(this.props.employees)
+    console.log(this.props.employees) 
     return (
       <View>
         <Text>Employee List</Text>
