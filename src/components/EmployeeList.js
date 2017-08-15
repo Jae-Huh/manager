@@ -1,6 +1,7 @@
 import React from 'react'
 import { ListView, View, Text } from 'react-native'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 import { employeesFetch } from '../actions'
 
@@ -26,6 +27,7 @@ class EmployeeList extends React.Component {
   }
 
   render() {
+    console.log(this.props.employees)
     return (
       <View>
         <Text>Employee List</Text>
@@ -36,4 +38,13 @@ class EmployeeList extends React.Component {
   }
 }
 
-export default connect(null, { employeesFetch })(EmployeeList)
+const mapStateToProps = (state) => {
+  // Use lodash to turn employees objects into an array of objects
+  const employees = _.map(state.employees, (val, uid) => {
+    return { ...val, uid }
+  })
+
+  return { employees }
+}
+
+export default connect(mapStateToProps, { employeesFetch })(EmployeeList)
