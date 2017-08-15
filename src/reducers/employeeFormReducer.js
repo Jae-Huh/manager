@@ -1,5 +1,6 @@
 import {
   EMPLOYEE_UPDATE,
+  EMPLOYEE_CREATE,
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -17,6 +18,9 @@ export default (state = INITIAL_STATE, action) => {
         [action.payload.prop]: action.payload.value,
         // [action.payload.prop] this method is called key interpolation
       }
+
+    case EMPLOYEE_CREATE:
+      return INITIAL_STATE
 
     default:
       return state
