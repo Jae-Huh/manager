@@ -5,7 +5,7 @@ import Communications from 'react-native-communications'
 
 import { Card, CardSection, Button, Confirm } from './common'
 import EmployeeForm from './EmployeeForm'
-import { employeeUpdate, employeeSave, employeeClear } from '../actions'
+import { employeeUpdate, employeeSave, employeeClear, employeeDelete } from '../actions'
 
 class EmployeeEdit extends React.Component {
   state = { showModal: false }
@@ -31,7 +31,9 @@ class EmployeeEdit extends React.Component {
   }
 
   onAccept() {
+    const { uid } = this.props.employee
 
+    this.props.employeeDelete({ uid })
   }
 
   onDecline() {
@@ -78,4 +80,6 @@ const mapStateToProps = (state) => {
   return { name, phone, shift }
 }
 
-export default connect(mapStateToProps, { employeeUpdate, employeeSave, employeeClear })(EmployeeEdit)
+export default connect(mapStateToProps, {
+  employeeUpdate, employeeSave, employeeClear, employeeDelete,
+})(EmployeeEdit)

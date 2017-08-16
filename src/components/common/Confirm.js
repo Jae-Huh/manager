@@ -34,7 +34,7 @@ const styles = {
   },
   textStyle: {
     flex: 1,
-    contSize: 18,
+    fontSize: 18,
     textAlign: 'center',
     lineHeight: 40,
   },
