@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 import Communications from 'react-native-communications'
 
-import { Card, CardSection, Button } from './common'
+import { Card, CardSection, Button, Confirm } from './common'
 import EmployeeForm from './EmployeeForm'
 import { employeeUpdate, employeeSave, employeeClear } from '../actions'
 
 class EmployeeEdit extends React.Component {
+  state = { showModal: false }
+
   componentWillMount() {
     _.each(this.props.employee, (value, prop) => {
       this.props.employeeUpdate({ prop, value })
@@ -25,8 +27,7 @@ class EmployeeEdit extends React.Component {
 
   onTextPress() {
     const { name, phone, shift } = this.props
-    Communications.text(phone, `Hello, ${name}! Your upcoming shift is on ${shift}`)
-
+    Communications.text(phone, `Hello, ${name}! Your upcoming shift is on ${shift}.`)
   }
 
   render() {
@@ -45,6 +46,18 @@ class EmployeeEdit extends React.Component {
             Text Schedule
           </Button>
         </CardSection>
+
+        <CardSection>
+          <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+            Fire Employee
+          </Button>
+        </CardSection>
+
+        <Confirm
+          visible={this.state.showModal}
+        >
+          Are you sure you want to delete this?
+        </Confirm>
       </Card>
     )
   }
