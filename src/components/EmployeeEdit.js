@@ -4,13 +4,17 @@ import _ from 'lodash'
 
 import { Card, CardSection, Button } from './common'
 import EmployeeForm from './EmployeeForm'
-import { employeeUpdate, employeeSave } from '../actions'
+import { employeeUpdate, employeeSave, employeeClear } from '../actions'
 
 class EmployeeEdit extends React.Component {
   componentWillMount() {
     _.each(this.props.employee, (value, prop) => {
       this.props.employeeUpdate({ prop, value })
     })
+  }
+
+  componentWillUnmount() {
+    this.props.employeeClear()
   }
 
   onButtonPress() {
@@ -37,4 +41,4 @@ const mapStateToProps = (state) => {
   return { name, phone, shift }
 }
 
-export default connect(mapStateToProps, { employeeUpdate, employeeSave })(EmployeeEdit)
+export default connect(mapStateToProps, { employeeUpdate, employeeSave, employeeClear })(EmployeeEdit)
