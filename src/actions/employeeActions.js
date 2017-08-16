@@ -58,3 +58,15 @@ export const employeeClear = () => {
     type: EMPLOYEE_CLEAR_SUCCESS,
   }
 }
+
+export const employeeDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth()
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .remove()
+      .then(() => {
+        Actions.employeeList({ type: 'reset' })
+      })
+  }
+}
